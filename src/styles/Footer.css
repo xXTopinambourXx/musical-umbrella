@@ -1,0 +1,8 @@
+/** BORDERS **/
+.footer.bottom-separator{
+	border-bottom: solid 3px rgba(255, 255, 255, 0.09);
+}
+
+.footer.top-separator{
+	border-top: solid 3px rgba(255, 255, 255, 0.09);
+}

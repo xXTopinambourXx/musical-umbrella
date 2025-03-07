@@ -1,0 +1,36 @@
+body {
+    display: flex;
+}
+
+.font-purple {
+	color: #9291D2;
+}
+
+.font-gradient-purple {
+	background: linear-gradient(60deg, rgb(122, 120, 255), rgb(235, 126, 217));
+	background-clip: text;
+	color: transparent;
+	font-family: 'Roboto Black', sans-serif !important;
+}
+
+.demo-backdrop {
+    min-height: 15em;
+    padding: 7em 0;
+    overflow: hidden;
+    animation: animationBg 10s linear infinite;
+}
+
+@keyframes animationBg {
+    0% { 
+        background-position: 0% 0%; 
+        background-image: linear-gradient(0deg, rgba(122, 120, 255, 0.20), rgba(235, 126, 217, 0.18));
+    }
+    50% {
+        background-position: 50% 50%;
+        background-image: linear-gradient(30deg, rgba(122, 120, 255, 0.20), rgba(235, 126, 217, 0.18));
+    }
+    100% { 
+        background-position: 0% 100%; 
+        background-image: linear-gradient(60deg, rgba(122, 120, 255, 0.20), rgba(235, 126, 217, 0.18));
+    }
+}
