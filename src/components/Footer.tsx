@@ -1,82 +1,64 @@
 import React from "react";
 
-import RedditLogo from "../assets/icons/icons8-reddit.svg";
-import TelegramLogo from "../assets/icons/icons8-telegram.svg";
-import DiscordLogo from "../assets/icons/icons8-discord.svg";
-import TwitterLogo from "../assets/icons/icons8-twitter.svg";
+import "../styles/Footer.css";
 
 import FranceFlag from "../assets/icons/fr.svg";
 
 import { Link } from 'react-router-dom';
 import { PROJECT_NAME } from "../config";
+import FooterIcon from "./common/FooterIcon";
 
 
 const Footer: React.FunctionComponent = () => {
 
     return (
-        <footer>
-            <div className="footer flex justify-between top-separator bottom-separator">
-                    <div className="flex flex-column gap-1">
+        <>
+            <div className="flex bottom-separator top-separator my-4 px-10 py-10 justify-evenly">
+                    <div className="flex flex-col gap-1">
 
-                        <h1 className="logo font-xxl">{PROJECT_NAME}</h1>
+                        <h1 className="text-3xl font-extrabold">{PROJECT_NAME}</h1>
 
-                        <div className="flex flex-column gap-05 font-thin">
+                        <div className="flex flex-col gap-1 font-extralight my-1">
                             <Link to="/terms">Terms & conditions</Link>
                             <Link to="/policy">Privacy policy</Link>
                         </div>
 
                     </div>
 
-                    <div className="flex">
+                        <div className="flex gap-14 ml-5 mr-5">
 
-                        <div className="flex gap-8 ml-5 mr-5">
-
-                            <div className="flex flex-column gap-1 font-light font-l">
+                            <div className="flex flex-col gap-4 font-light font-lg">
                                 <Link to="/faucet">The faucet</Link>
                                 <Link to="/lottery">The lottery</Link>
                                 <Link to="/test">Our games</Link>
                             </div>
 
-                            <div className="flex flex-column gap-1 font-light font-l">
+                            <div className="flex flex-col gap-4 font-light font-lg">
                                 <Link to="/news">Faucet news</Link>
                                 <Link to="/account">My account</Link>
-                                <Link to="/support">Contact us</Link>
+                                <Link to="/support">Support</Link>
                             </div>
 
                         </div>
 
-                        <div className="flex gap-15 flex-column">
+                        <div className="flex gap-5 flex-col">
 
-                            <h2 className="logo flex center font-light mr-5 ml-5">Follow us</h2>
+                            <h2 className="flex justify-center font-md mx-5 text-2xl">Follow us</h2>
 
-                            <div className="flex space-between w-100">
-                                <a href="https://twitter.com">
-                                    <img src={TwitterLogo} alt="twitter logo"/>
-                                </a>
-                                <a href="https://cacaboudin.fr">
-                                    <img src={DiscordLogo} alt="discord logo"/>
-                                </a>    
-                                <a href="https://cacaboudin.fr">
-                                    <img src={TelegramLogo} alt="telegram logo"/>
-                                </a>
-                                <a href="https://cacaboudin.fr">
-                                    <img src={RedditLogo} alt="reddit logo"/>
-                                </a>                         
+                            <div className="flex space-between w-100 gap-12">
+                                <FooterIcon title="Twitter" link="/twitter" size={40} />
+                                <FooterIcon title="Discord" link="/discord" size={40} />
+                                <FooterIcon title="Telegram" link="/telegram" size={40} />
+                                <FooterIcon title="Reddit" link="/reddit" size={40} />                     
                             </div>
 
                         </div>
-
-                    </div>
-
-                    <div className="flex">&nbsp;</div>
                 </div>
-                <div className="footer flex center">
-                    <div className="flex flex-column align-center">
-                        <p> {PROJECT_NAME} 2025. All rights reserved </p>
-                        <img src={FranceFlag} alt="france flag" />
-                    </div>
+                <div className="flex flex-col items-center my-8">
+                    <p>© 2025 {PROJECT_NAME}™</p>
+                    <img className="w-5 h-5" src={FranceFlag} alt="france flag"/>
                 </div>
-        </footer>
+        </>
     )
 }
 

@@ -6,7 +6,7 @@ interface NavItemProps {
     options?: string[];
 }
 
-const NavItem: React.FC<NavItemProps> = ({ title, options }) => {
+const HeaderNavItem: React.FC<NavItemProps> = ({ title, options }) => {
     return (
         <div className="navbar-options-container" data-navbar-option={title.toLowerCase()}>
 
@@ -21,4 +21,4 @@ const NavItem: React.FC<NavItemProps> = ({ title, options }) => {
     )
 }
 
-export default NavItem;
+export default HeaderNavItem;
