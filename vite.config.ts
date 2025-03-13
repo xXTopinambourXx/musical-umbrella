@@ -9,4 +9,8 @@ export default defineConfig({
   css: {
     postcss: './postcss.config.js', // Spécifie explicitement le fichier de configuration PostCSS
   },
+  server: {
+    port: 9000, // Port local
+    host: '0.0.0.0', // Écoute sur toutes les interfaces réseau
+  },
 })

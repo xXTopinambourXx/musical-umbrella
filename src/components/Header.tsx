@@ -1,33 +1,47 @@
-import { useEffect } from "react";
+import React from "react";
+import { useState } from "react";
 import { PROJECT_NAME } from "../config";
 import "../styles/Header.css";
 
 import { Link } from "react-router-dom";
 import NavItem from "./HeaderNavItem";
-import { Button } from "@mui/material";
+import { Button, Stack } from "@mui/material";
+import AuthModal, { AuthType } from "./common/AuthModal";
 
 const Header: React.FunctionComponent = () => {
-    const isLoggedIn = false;
 
-    useEffect(() => {
-        if (isLoggedIn) {
-            return
-        }
-    })
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [authType, setAuthType] = useState<AuthType>(AuthType.LOGIN); // Par défaut : Connexion
+
+    // Fonction pour ouvrir la modale avec le bon type (connexion ou inscription)
+    const handleOpenModal = (type: AuthType) => {
+        setAuthType(type);
+        setIsModalOpen(true);
+    };
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+    };
 
     return (
         <>
-        <div className="content">
+        <Stack className="content">
 
-                <div className="header flex space-between align-center justify-between">
+                <Stack className="header flex space-between align-center justify-between" direction={'row'}>
                     
                     <Link to="/">
-                        <div className="font-bold text-3xl decoration-inherit text-white m-2">
+                        <div className="font-extrabold text-3xl decoration-inherit text-white m-2">
                             <h2>{ PROJECT_NAME }</h2>
                         </div>
                     </Link>
 
-                    <div className="header-navbar" id="main-navbar">
+                    <Stack 
+                        id="main-navbar" 
+                        direction={'row'} 
+                        spacing={16}
+                        sx={{
+                            justifyContent: "space-evenly",
+                            alignItems: "flex-end", }}>
 
                         <NavItem title={"Games"} options={["Dice", "Crash", "Bombs", "Plinko"]}></NavItem>
 
@@ -39,14 +53,27 @@ const Header: React.FunctionComponent = () => {
 
                         <NavItem title={"Test"}></NavItem>
                         
-                    </div>
+                    </Stack>
                     
                     <div className="items-center flex gap-5 mx-5">
-                        <Link to="/login"><Button variant="outlined" sx={{color: '#ffffff', borderColor: '#ffffff', boxSizing: "content-box"}}>Sign in</Button></Link>
-                        <Link to="/register"><Button variant="contained" sx={{color: '#000000', backgroundColor: "#ffffff", boxSizing: "content-box"}}>Sign up</Button></Link>
+                        <Button 
+                            variant="text" 
+                            sx={{ color: '#ffffff', borderColor: '#ffffff', boxSizing: "content-box", ":hover": { backgroundColor: "rgba(255,255,255,0.15)" }}}
+                            onClick={() => handleOpenModal(AuthType.LOGIN)} // Ouvre la modale en mode "Connexion"
+                        >
+                            Sign in
+                        </Button>
+                        <Button 
+                            variant="outlined" 
+                            sx={{ color: '#ffffff', borderColor: '#ffffff', boxSizing: "content-box", ":hover": { backgroundColor: "rgba(255,255,255,0.15)" }}}
+                            onClick={() => handleOpenModal(AuthType.SIGNUP)} // Ouvre la modale en mode "Inscription"
+                        >
+                            Sign up
+                        </Button>
                     </div>
-                </div>
-            </div>
+                </Stack>
+                <AuthModal open={isModalOpen} onClose={handleCloseModal} type={authType} />
+            </Stack>
         </>
     )
 }
