@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Backdrop, Box, Button, FormControl, Modal, styled, Tab, Tabs, TextField } from "@mui/material";
+import { Backdrop, Box, Button, Checkbox, FormControl, FormControlLabel, Link, Modal, Stack, styled, Tab, Tabs, TextField, Typography } from "@mui/material";
+import { RxCross2 } from "react-icons/rx";
 import InputAuth from "./InputAuth";
 
 export enum AuthType {
     LOGIN = 0,
-    SIGNUP = 1
+    SIGNUP = 1,
+    FORGOTTEN = 2
 }
 
 interface AuthModalProps {
@@ -28,6 +30,8 @@ const containerStyle = {
 }
 
 const modalStyle = {
+    display: "flex",
+    flexDirection: "column",
     width: 400, // Largeur du modal
     bgcolor: "rgb(15, 15, 15)", // Couleur de fond
     boxShadow: 24, // Ombre
@@ -53,6 +57,8 @@ const AuthModal: React.FC<AuthModalProps> = ({ open, onClose, type}) => {
         <Modal sx={containerStyle} open={open} onClose={onClose} BackdropComponent ={BlurredBackdrop} BackdropProps={{timeout: 400}}>
             <Box sx={modalStyle}>
 
+                <RxCross2 size={22} onClick={onClose} style={{display: "flex", cursor: "pointer", alignSelf: "end"}}/>
+
                 {/*Tabs for navigation between login/register*/}
                 <Tabs value={activeTab} onChange={TabChange} centered>
                     <Tab label="Login" />
@@ -67,7 +73,11 @@ const AuthModal: React.FC<AuthModalProps> = ({ open, onClose, type}) => {
                         <FormControl sx={{gap: "2rem", width: "100%"}}>
                             <InputAuth title={"Email"} id={"email-input-login"} type={"EMAIL"}></InputAuth>
                             <InputAuth title={"Password"} id={"pswd-input-login"} type={"PASSWORD"}></InputAuth>
-                            <Button variant="outlined" type="submit">Sign in</Button>
+                            <Stack direction={"row"} sx={{alignItems: "center", justifyContent: "space-between"}} spacing={0}>
+                                <FormControlLabel control={<Checkbox />} label={"Remember me"}></FormControlLabel>
+                                <Link component="button" onClick={() => setActiveTab(AuthType.FORGOTTEN)}>Forgot password ?</Link>
+                            </Stack>
+                            <Button variant="outlined" type="submit" sx={{width: "fit-content", alignSelf: "center"}}>Sign in</Button>
                         </FormControl>
                     </form>
                 </Box>
@@ -82,6 +92,19 @@ const AuthModal: React.FC<AuthModalProps> = ({ open, onClose, type}) => {
                             <TextField id="email-input-signup" type="email" label="E-mail" variant="outlined" required/>
                             <TextField id="pswd-input-signup" type="password" label="Password" variant="outlined" required/>
                             <Button variant="outlined" type="submit" sx={{width: "fit-content", alignSelf: "center"}}>Sign up</Button>
+                        </FormControl>
+                    </form>
+                </Box>
+                )}
+
+                {/* BOX OF PASSWORD FORGET */}
+                {activeTab === AuthType.FORGOTTEN && (
+                <Box>
+                    <Typography variant="subtitle1" sx={{my: "1.25rem"}}>Enter your user account's verified email address and we will send you a password reset link.</Typography>
+                    <form>
+                        <FormControl sx={{gap: "2rem", width: "100%"}}>
+                            <TextField id="email-input-signup" type="email" label="E-mail" variant="outlined" required/>
+                            <Button variant="outlined" type="submit" sx={{width: "fit-content", alignSelf: "center"}}>Send an email</Button>
                         </FormControl>
                     </form>
                 </Box>
