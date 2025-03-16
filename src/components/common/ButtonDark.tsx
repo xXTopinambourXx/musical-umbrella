@@ -20,13 +20,15 @@ const styleButton = {
 interface ButtonProps {
   title: string;
   purpleText?: string; // Texte en violet optionnel
+  onClick?: () => void; // Redirection optionnel
 }
 
-const ButtonDark: React.FC<ButtonProps> = ({ title, purpleText = null }) => {
+const ButtonDark: React.FC<ButtonProps> = ({ title, purpleText = null, onClick}) => {
   return (
     <Button
       variant="text"
       sx={styleButton}
+      onClick={onClick}
     >
       {title}
       {purpleText && (

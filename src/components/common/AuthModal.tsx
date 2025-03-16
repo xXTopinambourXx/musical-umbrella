@@ -60,7 +60,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ open, onClose, type}) => {
                 <RxCross2 size={22} onClick={onClose} style={{display: "flex", cursor: "pointer", alignSelf: "end"}}/>
 
                 {/*Tabs for navigation between login/register*/}
-                <Tabs value={activeTab} onChange={TabChange} centered>
+                <Tabs value={activeTab} onChange={TabChange} centered sx={{mb: "1.5rem"}}>
                     <Tab label="Login" />
                     <Tab label="Signup" />
                 </Tabs>
