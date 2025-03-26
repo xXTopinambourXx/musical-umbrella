@@ -6,6 +6,22 @@ body {
 	color: #9291D2;
 }
 
+.bg-purple {
+	background-color: #6B6A97;
+}
+
+.border-purple {
+	border-color: rgb(107, 106, 151);
+}
+
+@media (prefers-color-scheme: dark) {
+    .dark\:from-purple {
+        --tw-gradient-from: rgb(33, 31, 55) var(--tw-gradient-from-position);
+        --tw-gradient-to: rgb(31 41 55 / 0) var(--tw-gradient-to-position);
+        --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+    }
+}
+
 .font-gradient-purple {
 	background: linear-gradient(60deg, rgb(122, 120, 255), rgb(235, 126, 217));
 	background-clip: text;

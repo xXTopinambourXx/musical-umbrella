@@ -1,3 +1,5 @@
+
+
 const PolicyPage = () => {
     return (
         <div className="flex flex-col text-justify gap-4">

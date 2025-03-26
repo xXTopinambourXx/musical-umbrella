@@ -3,6 +3,7 @@ import { Backdrop, Box, Button, Checkbox, FormControl, FormControlLabel, Link, M
 import { RxCross2 } from "react-icons/rx";
 import InputAuth from "./InputAuth";
 
+// eslint-disable-next-line react-refresh/only-export-components
 export enum AuthType {
     LOGIN = 0,
     SIGNUP = 1,
@@ -60,7 +61,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ open, onClose, type}) => {
                 <RxCross2 size={22} onClick={onClose} style={{display: "flex", cursor: "pointer", alignSelf: "end"}}/>
 
                 {/*Tabs for navigation between login/register*/}
-                <Tabs value={activeTab} onChange={TabChange} centered sx={{mb: "1.5rem"}}>
+                <Tabs value={activeTab} onChange={TabChange} centered sx={{mb: "1.25rem"}}>
                     <Tab label="Login" />
                     <Tab label="Signup" />
                 </Tabs>
@@ -100,7 +101,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ open, onClose, type}) => {
                 {/* BOX OF PASSWORD FORGET */}
                 {activeTab === AuthType.FORGOTTEN && (
                 <Box>
-                    <Typography variant="subtitle1" sx={{my: "1.25rem"}}>Enter your user account's verified email address and we will send you a password reset link.</Typography>
+                    <Typography variant="subtitle1" sx={{mb: "1.75rem"}}>Enter your user account's verified email address and we will send you a password reset link.</Typography>
                     <form>
                         <FormControl sx={{gap: "2rem", width: "100%"}}>
                             <TextField id="email-input-signup" type="email" label="E-mail" variant="outlined" required/>

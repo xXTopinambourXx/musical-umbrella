@@ -4,9 +4,9 @@ import { PROJECT_NAME } from "../config";
 import "../styles/Header.css";
 
 import { Link } from "react-router-dom";
-import NavItem from "./HeaderNavItem";
 import { Button, Stack } from "@mui/material";
 import AuthModal, { AuthType } from "./common/AuthModal";
+import HeaderNavItem from "./HeaderNavItem";
 
 const Header: React.FunctionComponent = () => {
 
@@ -30,7 +30,7 @@ const Header: React.FunctionComponent = () => {
                 <Stack className="header flex space-between align-center justify-between" direction={'row'}>
                     
                     <Link to="/">
-                        <div className="font-extrabold text-3xl decoration-inherit text-white m-2">
+                        <div className="font-extrabold text-3xl decoration-inherit text-white m-3">
                             <h2>{ PROJECT_NAME }</h2>
                         </div>
                     </Link>
@@ -41,21 +41,21 @@ const Header: React.FunctionComponent = () => {
                         spacing={16}
                         sx={{
                             justifyContent: "space-evenly",
-                            alignItems: "flex-end", }}>
+                            alignItems: "center", }}>
 
-                        <NavItem title={"Games"} options={["Dice", "Crash", "Bombs", "Plinko"]}></NavItem>
+                        <HeaderNavItem title={"Games"} options={["Dice", "Crash", "Bombs", "Plinko"]}></HeaderNavItem>
 
-                        <NavItem title={"Faucet"}></NavItem>
+                        <HeaderNavItem title={"Faucet"}></HeaderNavItem>
 
-                        <NavItem title={"Lottery"}></NavItem>
+                        <HeaderNavItem title={"Lottery"}></HeaderNavItem>
 
-                        <NavItem title={"Support"} options={["Contact us", "Bug report", "Q&A", "New updates"]}></NavItem>
+                        <HeaderNavItem title={"Support"} options={["Contact us", "Bug report", "Q&A", "New updates"]}></HeaderNavItem>
 
-                        <NavItem title={"Test"}></NavItem>
+                        <HeaderNavItem title={"Test"}></HeaderNavItem>
                         
                     </Stack>
                     
-                    <div className="items-center flex gap-5 mx-5">
+                    <Stack className="items-center flex gap-5 mx-5" direction={"row"}>
                         <Button 
                             variant="text" 
                             sx={{ color: '#ffffff', borderColor: '#ffffff', boxSizing: "content-box", ":hover": { backgroundColor: "rgba(255,255,255,0.15)" }}}
@@ -70,7 +70,7 @@ const Header: React.FunctionComponent = () => {
                         >
                             Sign up
                         </Button>
-                    </div>
+                    </Stack>
                 </Stack>
                 <AuthModal open={isModalOpen} onClose={handleCloseModal} type={authType} />
             </Stack>
