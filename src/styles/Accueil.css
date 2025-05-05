@@ -26,5 +26,5 @@ body {
 	background: linear-gradient(60deg, rgb(122, 120, 255), rgb(235, 126, 217));
 	background-clip: text;
 	color: transparent;
-	font-family: 'Roboto Black', sans-serif !important;
+	font-family: 'Roboto', sans-serif !important;
 }

@@ -7,63 +7,14 @@ import AuthModal, { AuthType } from '../components/common/AuthModal';
 import { useState } from 'react';
 import { Box, Stack, Typography } from '@mui/material';
 import Grid from '@mui/material/Grid2';
-import HomeCountdown from '../components/home/HomeCountdown';
-import GradientButton from '../components/common/GradientButton';
-import Feature from '../components/home/Feature';
+import FeatureSection from '../components/home/FeatureSection';
+import HomePageSection from '../components/home/HomePageSection';
 
 const stackStyle = {
   textAlign: "justify", 
   m: "2.5rem",
   px: "1rem"
 }
-
-const features = [
-  {
-    title: "Built for players",
-    description:
-      "Built for engineers, developers, dreamers, thinkers and doers.",
-    icon: undefined,
-  },
-  {
-    title: "Instant cashback",
-    description:
-      "It's as easy as using an Apple, and as expensive as buying one.",
-    icon: undefined,
-  },
-  {
-    title: "Pricing like no other",
-    description:
-      "Our prices are best in the market. No cap, no lock, no credit card required.",
-    icon: undefined,
-  },
-  {
-    title: "100% Uptime guarantee",
-    description: "We just cannot be taken down by anyone.",
-    icon: undefined,
-  },
-  {
-    title: "Multi-tenant Architecture",
-    description: "You can simply share passwords instead of buying new seats",
-    icon: undefined,
-  },
-  {
-    title: "24/7 Customer Support",
-    description:
-      "We are available a 100% of the time. Atleast our AI Agents are.",
-    icon: undefined,
-  },
-  {
-    title: "Money back guarantee",
-    description:
-      "If you donot like EveryAI, we will convince you to like us.",
-    icon: undefined,
-  },
-  {
-    title: "And everything else",
-    description: "I just ran out of copy ideas. Accept my sincere apologies",
-    icon: undefined,
-  },
-];
 
 const HomePage = () => {
 
@@ -105,18 +56,15 @@ const HomePage = () => {
       </AuroraBackground>
 
       <Stack spacing={16} sx={{display: "flex", alignItems: "space-evenly"}}>
-        <Box>
-          <Grid container spacing={12} sx={stackStyle}>
-            <Grid size={6}>
-                <HomeCountdown></HomeCountdown>
-                <GradientButton title={'Claim reward'} />
-            </Grid>
-            <Grid size={4}>
-              <Typography variant='h5' sx={{fontWeight: "700"}}><span className='font-purple'>New faucet</span>, endless rewards</Typography>
-              <Typography variant='subtitle1' sx={{fontWeight: "300"}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut</Typography>
-            </Grid>
-          </Grid>
-        </Box>
+        
+        <HomePageSection 
+          category={'OPTION_FIRST'} 
+          text={{
+            title: 'New faucet, endless rewards',
+            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut'
+          }} 
+          option={'COUNTDOWN'}>
+        </HomePageSection>
 
         <Box>
           <Grid container spacing={12} sx={stackStyle}>
@@ -129,6 +77,15 @@ const HomePage = () => {
             </Grid>
           </Grid>
         </Box>
+
+        <HomePageSection 
+          category={'CENTER'} 
+          text={{
+            title: 'New faucet, endless rewards',
+            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut'
+          }} 
+          option={'CAROUSEL'}>
+        </HomePageSection>
 
         <Box>
           <Grid container spacing={12} sx={stackStyle}>
@@ -143,9 +100,7 @@ const HomePage = () => {
         </Box>
 
         <Box sx={{display: "grid", flexDirection: "center", width: "100%", gridTemplateColumns: "repeat(4, 1fr)"}}>
-          {features.map((feature, index) => (
-            <Feature title={feature.title} index={index} description={feature.description} icon={undefined} />
-          ))}
+          <FeatureSection></FeatureSection>
         </Box>
 
         <Box>

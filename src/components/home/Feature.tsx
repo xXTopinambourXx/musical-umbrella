@@ -1,6 +1,4 @@
 import { cn } from "../../../lib/utils";
-
-
 interface FeatureProps {
     title: string,
     description: string,
