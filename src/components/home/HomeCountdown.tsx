@@ -10,7 +10,7 @@ interface CountdownRendererProps {
 // Composant de rendu personnalisé
 const renderer = ({ minutes, seconds }: CountdownRendererProps) => {
   return (
-    <Typography variant="h1">
+    <Typography variant="h1" sx={{ fontWeight: 900, fontStyle: "italic", textAlign: "center" }}>
       {minutes}:{seconds < 10 ? `0${seconds}` : seconds}
     </Typography>
   );

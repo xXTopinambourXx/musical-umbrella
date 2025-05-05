@@ -6,6 +6,7 @@ import ButtonDark from '../components/common/ButtonDark';
 import AuthModal, { AuthType } from '../components/common/AuthModal';
 import { useState } from 'react';
 import { Box, Stack, Typography } from '@mui/material';
+import ReactMarkdown from 'react-markdown';
 import Grid from '@mui/material/Grid2';
 import FeatureSection from '../components/home/FeatureSection';
 import HomePageSection from '../components/home/HomePageSection';
@@ -61,30 +62,46 @@ const HomePage = () => {
           category={'OPTION_FIRST'} 
           text={{
             title: 'New faucet, endless rewards',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut'
+            description: 'With our new faucet system, you can earn rewards every 15 minutes. Win up to 300k satoshis with only one spin!'
           }} 
           option={'COUNTDOWN'}>
         </HomePageSection>
 
-        <Box>
+        {/*<Box>
           <Grid container spacing={12} sx={stackStyle}>
             <Grid size={4}>
                 <Typography variant="h5" sx={{fontWeight: "700"}}><span className='font-purple'>Multiple games</span> for all users</Typography>
-                <Typography variant='subtitle1' sx={{fontWeight: "300"}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut</Typography>
+                <Typography variant='subtitle1' sx={{fontWeight: "300"}}>At HyperFaucet we care about our users experience and decided to add multiple games like the dice and plinko, so you can have multiple way to enrich yourself!</Typography>
             </Grid>
             <Grid size={6}>
               <Typography variant='h1'>CARROUSEL</Typography>
             </Grid>
           </Grid>
-        </Box>
-
+        </Box>*/}
         <HomePageSection 
           category={'CENTER'} 
           text={{
-            title: 'New faucet, endless rewards',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut'
+            title: 'Multiple games for all users',
+            description: (
+              <ReactMarkdown>
+                {"At **HyperFaucet**, we care deeply about our **users' experience** and are constantly looking for ways to make the platform more **engaging** and **rewarding**. That's why we've decided to introduce multiple **fun** and **interactive games** that offer exciting **new opportunities** to earn rewards and **enrich yourself**."}
+              </ReactMarkdown>
+            )
           }} 
           option={'CAROUSEL'}>
+        </HomePageSection>
+
+        <HomePageSection 
+          category={'OPTION_FIRST'} 
+          text={{
+            title: 'Multiple games for all users',
+            description: (
+              <ReactMarkdown>
+                {"At **HyperFaucet**, we care deeply about our **users' experience** and are constantly looking for ways to make the platform more **engaging** and **rewarding**. That's why we've decided to introduce multiple **fun** and **interactive games** that offer exciting **new opportunities** to earn rewards and **enrich yourself**."}
+              </ReactMarkdown>
+            )
+          }} 
+          option={'LOTTERY'}>
         </HomePageSection>
 
         <Box>
